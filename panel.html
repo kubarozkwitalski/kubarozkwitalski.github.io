@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Gminy</title>
+    <link rel="stylesheet" href="panel.css">
+    <script src="budzet.js" lang="javascript"></script>
+
+</head>
+<body>
+<h1 id="gmina"></h1>
+<div id="main_section">
+<div class="intro">Liczba mieszkańców: <div id="ludnosc"></div></div>
+<h2 class="intro">Dochody budżetu za rok <strong>2019</strong>:
+    <span id="budzet:dochody" class="pomaranczowy"></span>
+    , wydatki:
+    <span id="budzet:wydatki" class="pomaranczowy"></span>
+</h2>
+<span class="intro">Dochody z UE: <span id="dochod_ue" class="pomaranczowy"></span></span><br/>
+<span class="intro">Wydatki bieżące z UE: <span id="wydatki_biezace_ue" class="pomaranczowy"></span></span><br/>
+<span class="intro">Wydatki inwestycyjne z UE: <span id="wydatki_inwestycje_ue" class="pomaranczowy"></span></span><br/>
+    <span class="intro">Gmina zebrała <span id="gospodarka_odpadami_komunalnymi:dochody" class="pomaranczowy"></span>
+    na gospodarkę odpadami komunalnymi, a wydała: <span id="gospodarka_odpadami_komunalnymi:wydatki" class="pomaranczowy"></span></span><br/>
+
+    <span id="janosik:otrzymala" class="intro">Gmina otrzymała <span id="janosik:dochody" class="pomaranczowy"></span>
+        "janosikowego" od samorządów z wysokimi dochodami</span>
+    <span id="janosik:wplacila" class="intro">Gmina wpłaciła <span id="janosik:wydatki" class="pomaranczowy"></span>
+        netto "janosikowego" na rzecz samorządów z niskimi dochodami</span><br/><br/><br/>
+
+<div id="main_display">
+</div>
+</div>
+<span id="sekcja_dzial" hidden>
+    <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
+    <h2 class="sekcja_dzial"><span id="name"></span>: <span id="v" class="pomaranczowy"></span> (<span id="procent"></span>%)</h2>
+    <span class="intro">W przeliczeniu na 1 mieszkańca to: <span id="v_pc" class="pomaranczowy"></span></span><br/>
+    <span class="intro">czyli o <span id="v_pc_diff_style"><span id="v_pc_diff"></span><span id="v_pc_diff_word"></span></span></span>
+    <span class="intro">niż średnio w Polsce (<span id="pl_v_pc" class="pomaranczowy"></span>)</span><br/><br/>
+    <div id="rozdzialy"></div>
+</span>
+</body>
+</html>
