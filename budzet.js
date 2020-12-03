@@ -34,7 +34,7 @@ function pieChart(parentId, children, link_to_children) {
     legend = document.createElement('div');
     legend.id = parentId + ':legend'
     legend.className = 'dzial legend';
-    document.getElementById(parentId).className = document.getElementById(parentId).className + 'chart'
+    document.getElementById(parentId).className = 'chart'
     document.getElementById(parentId).appendChild(legend);
 
     let colors = ["#1b458b", "#0a0", "#f80", "#08f", "#a04", "#ffd700ee", "#1b458bdd", "#0a0c", "#f80b", "#08fa",
