@@ -82,3 +82,11 @@
     border-radius: 100%;
     clip: rect(0px, 600px, 600px, 300px);
 }
+
+.projekty, tr {
+    border-collapse: collapse;
+}
+
+.projekty td {
+    border: 1px solid black;
+}

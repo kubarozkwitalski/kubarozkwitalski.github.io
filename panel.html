@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Panel Gminy</title>
-    <link rel="stylesheet" href="panel.css">
-    <script src="budzet.js" lang="javascript"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-97FY31FJHN"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -12,6 +8,10 @@
         gtag('js', new Date());
         gtag('config', 'G-97FY31FJHN');
     </script>
+    <meta charset="UTF-8">
+    <title>Panel Gminy</title>
+    <link href="panel.css" rel="stylesheet"/>
+    <script src="budzet.js" lang="javascript"></script>
 </head>
 <body>
 <h1 id="gmina"></h1>
@@ -23,8 +23,9 @@
     <span id="budzet:wydatki" class="pomaranczowy"></span>
 </h2>
 <span class="intro" hidden>Dochody z UE: <span id="dochod_ue" class="pomaranczowy"></span></span><br/>
-<span class="intro">Wydatki bieżące dofinansowane z UE: <span id="wydatki_biezace_ue" class="pomaranczowy"></span></span><br/>
-<span class="intro">Wydatki inwestycyjne dofinansowane z UE: <span id="wydatki_inwestycje_ue" class="pomaranczowy"></span></span><br/>
+<span class="intro">Wydatki dofinansowane z UE: (<a href="#sekcja_ue" onclick="pokaz_ue();">Szczegóły</a>)<br/>
+    Bieżące: <span id="wydatki_biezace_ue" class="pomaranczowy"></span><br/>
+    Inwestycyjne: <span id="wydatki_inwestycje_ue" class="pomaranczowy"></span><br/><br/></span>
     <span class="intro">Gmina zebrała <span id="gospodarka_odpadami_komunalnymi:dochody" class="pomaranczowy"></span>
     na gospodarkę odpadami komunalnymi, a wydała: <span id="gospodarka_odpadami_komunalnymi:wydatki" class="pomaranczowy"></span></span><br/>
 
@@ -43,6 +44,10 @@
     <span class="intro">czyli o <span id="v_pc_diff_style"><span id="v_pc_diff"></span><span id="v_pc_diff_word"></span></span></span>
     <span class="intro">niż średnio w Polsce (<span id="pl_v_pc" class="pomaranczowy"></span>)</span><br/><br/>
     <div id="rozdzialy"></div>
+</span>
+<span id="sekcja_ue" hidden>
+    <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
+    <span id="projekty"></span>
 </span>
 </body>
 </html>

@@ -85,14 +85,36 @@ function pieChart(parentId, children, link_to_children) {
     }
 }
 
+function fillProjektyUE(json) {
+    let out = '<table class="projekty">'
+    Object.keys(json).forEach(function(key) {
+        let rows = ''
+        let header = ''
+        Object.keys(json[key]).forEach(function(dana) {
+            let x = '<td>'
+            x += json[key][dana]
+            x += '</td>'
+            rows = x + rows
+            if (key === '0') {
+                header = '<td>' + dana + '</td>' + header
+            }
+        })
+        if (key === '0') {
+            out += '<th>' + header + '</th>'
+        }
+        out += '<tr><td>' + key + '</td>' + rows + '</tr>'
+    })
+    document.getElementById('projekty').innerHTML = out;
+}
 function fillTable(json) {
     console.log(json);
     // Główny pie chart
     pieChart('main_display', json.children, true)
+    fillProjektyUE(json.projekty_ue);
 
     // Wypełnienie szczegółów o gminie z JSONa
     Object.keys(json).forEach(function(key) {
-        if (key === 'children') {
+        if (key === 'children' || key === 'projekty_ue') {
             // ignore
         } else if (key === 'gospodarka_odpadami_komunalnymi' ||
             key === 'budzet') {
@@ -123,11 +145,19 @@ function zmien_dzial(dzial) {
 
     document.getElementById('main_section').hidden = true;
     document.getElementById('sekcja_dzial').hidden = false;
+    document.getElementById('sekcja_ue').hidden = true;
+}
+
+function pokaz_ue() {
+    document.getElementById('main_section').hidden = true;
+    document.getElementById('sekcja_dzial').hidden = true;
+    document.getElementById('sekcja_ue').hidden = false;
 }
 
 function wroc() {
     document.getElementById('main_section').hidden = false;
     document.getElementById('sekcja_dzial').hidden = true;
+    document.getElementById('sekcja_ue').hidden = true;
     window.location.href = window.location.href.split('#')[0] + '#';
 }
 
@@ -141,6 +171,8 @@ window.addEventListener("hashchange", function(e) {
     if (e.newURL.includes("#sekcja_dzial_")) {
         dzial = e.newURL.split("sekcja_dzial_")[1];
         zmien_dzial(parseInt(dzial));
+    } else if (e.newURL.includes("#sekcja_ue")) {
+        // do nothing
     } else {
         wroc();
     }
