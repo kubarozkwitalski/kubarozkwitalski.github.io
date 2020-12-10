@@ -18,14 +18,18 @@
 <div id="main_section">
 <div class="intro">Liczba mieszkańców: <div id="ludnosc"></div></div>
 <h2 class="intro">Dochody budżetu za rok <strong>2019</strong>:
-    <span id="budzet:dochody" class="pomaranczowy"></span>
-    , wydatki:
+    <span id="budzet:dochody" class="pomaranczowy"></span>,<br/>
+    wydatki:
     <span id="budzet:wydatki" class="pomaranczowy"></span>
 </h2>
 <span class="intro" hidden>Dochody z UE: <span id="dochod_ue" class="pomaranczowy"></span></span><br/>
-<span class="intro">Wydatki dofinansowane z UE: (<a href="#sekcja_ue" onclick="pokaz_ue();">Szczegóły</a>)<br/>
-    Bieżące: <span id="wydatki_biezace_ue" class="pomaranczowy"></span><br/>
-    Inwestycyjne: <span id="wydatki_inwestycje_ue" class="pomaranczowy"></span><br/><br/></span>
+<span class="intro">Wydatki dofinansowane z UE:<br/>
+    Bieżące gminy: <span id="wydatki_biezace_ue" class="pomaranczowy"></span><br/>
+    Inwestycyjne gminy: <span id="wydatki_inwestycje_ue" class="pomaranczowy"></span><br/>
+    <a href="#sekcja_ue" onclick="pokaz_ue();">Dofinansowania UE w gminie od 2014</a>: <span id="dotacje_ue"></span><br/>
+    <span id="dotacje_powiatowe"><span id="udzial_w_dotacjach_ue_powiatu"></span> udziału w powiatowych (wg ludności)<br/></span>
+    <span id="dotacje_wojewodztwa"><span id="udzial_w_dotacjach_ue_wojewodztwa"></span> udziału w wojewódzkich (wg ludności)<br/></span><br/></span>
+
     <span class="intro">Gmina zebrała <span id="gospodarka_odpadami_komunalnymi:dochody" class="pomaranczowy"></span>
     na gospodarkę odpadami komunalnymi, a wydała: <span id="gospodarka_odpadami_komunalnymi:wydatki" class="pomaranczowy"></span></span><br/>
 
@@ -40,14 +44,21 @@
 <span id="sekcja_dzial" hidden>
     <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
     <h2 class="sekcja_dzial"><span id="name"></span>: <span id="v" class="pomaranczowy"></span> (<span id="procent"></span>%)</h2>
+    <span class="intro">To o <span id="v_zmiana"></span>% <span id="v_kierunek"></span> niż w 2018 roku.</span></br>
     <span class="intro">W przeliczeniu na 1 mieszkańca to: <span id="v_pc" class="pomaranczowy"></span></span><br/>
     <span class="intro">czyli o <span id="v_pc_diff_style"><span id="v_pc_diff"></span><span id="v_pc_diff_word"></span></span></span>
     <span class="intro">niż średnio w Polsce (<span id="pl_v_pc" class="pomaranczowy"></span>)</span><br/><br/>
-    <div id="rozdzialy"></div>
+    <span class="intro">i o <span id="v_wlk_pc_diff_style"><span id="v_wlk_pc_diff"></span><span id="v_wlk_pc_diff_word"></span></span></span>
+    <span class="intro">niż średnio w gminach <span id="wlk"></span> mieszkańców</span><br/><br/>
+    <span id="rozdzialy"></span>
 </span>
 <span id="sekcja_ue" hidden>
     <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
-    <span id="projekty"></span>
+    <span id="projekty"></span><br/>
+    <h2>Powiatowe</h2>
+    <span id="projekty_pow"></span><br/>
+    <h2>Wojewódzkie</h2>
+    <span id="projekty_woj"></span>
 </span>
 </body>
 </html>
