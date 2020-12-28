@@ -1,15 +1,14 @@
 // https://observablehq.com/@d3/zoomable-sunburst@353
-export default function define(runtime, observer) {
+export default function sunburst(runtime, observer) {
   const main = runtime.module();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const gmina = urlParams.get('g');
   const nazwa = urlParams.get('n');
-  const ludnosc = urlParams.get('l');
   const fileAttachments = new Map([["flare-2.json",new URL("./files/"+gmina+".json",import.meta.url)]]);
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
-  main.variable(observer()).define(["md"], function(md){return(
-      `Wizualizacja budżetu: ` + nazwa + `  Ludność: ` + ludnosc
+  main.variable(observer()).define([], function(){return(
+      `Wizualizacja budżetu: ` + nazwa
 )});
   main.variable(observer("chart")).define("chart", ["partition","data","d3","width","color","arc","format","radius"], function(partition,data,d3,width,color,arc,format,radius)
 {
