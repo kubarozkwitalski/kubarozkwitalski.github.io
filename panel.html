@@ -11,7 +11,18 @@
     <meta charset="UTF-8">
     <title>Panel Gminy</title>
     <link href="panel.css" rel="stylesheet"/>
+    <link href="inspector.css" rel="stylesheet"/>
     <script src="budzet.js" lang="javascript"></script>
+    <script type="module">
+
+        import sunburst from "./86ddbc29bd33f9d6@353.js";
+        import bilans from "./e68ad55af4b37234@124.js";
+        import {Runtime, Inspector} from "./runtime.js";
+
+        const runtime = new Runtime();
+        const main = runtime.module(bilans, Inspector.into(document.getElementById('bilans')));
+        const main2 = runtime.module(sunburst, Inspector.into(document.getElementById('sunburst')));
+    </script>
 </head>
 <body>
 <h1 id="gmina"></h1>
@@ -22,13 +33,14 @@
     wydatki:
     <span id="budzet:wydatki" class="pomaranczowy"></span>
 </h2>
+<div id="bilans"></div>
 <span class="intro" hidden>Dochody z UE: <span id="dochod_ue" class="pomaranczowy"></span></span><br/>
 <span class="intro">Wydatki dofinansowane z UE:<br/>
     Bieżące gminy: <span id="wydatki_biezace_ue" class="pomaranczowy"></span><br/>
     Inwestycyjne gminy: <span id="wydatki_inwestycje_ue" class="pomaranczowy"></span><br/>
-    <a href="#sekcja_ue" onclick="pokaz_ue();">Dofinansowania UE w gminie od 2014</a>: <span id="dotacje_ue"></span><br/>
-    <span id="dotacje_powiatowe"><span id="udzial_w_dotacjach_ue_powiatu"></span> udziału w powiatowych (wg ludności)<br/></span>
-    <span id="dotacje_wojewodztwa"><span id="udzial_w_dotacjach_ue_wojewodztwa"></span> udziału w wojewódzkich (wg ludności)<br/></span><br/></span>
+    <a href="#sekcja_ue" onclick="pokaz_ue();">Dofinansowania UE w gminie od 2014</a>: <span id="dotacje_ue:gmina"></span> (<span id="dotacje_ue:gmina_pc"></span> na mieszkańca)<br/>
+    <span id="dotacje_powiatowe"><span id="dotacje_ue:powiat"></span> udziału w powiatowych (<span id="dotacje_ue:powiat_pc"></span> na mieszkańca)</span><br/>
+    <span id="dotacje_wojewodztwa"><span id="dotacje_ue:wojewodztwo"></span> udziału w wojewódzkich (<span id="dotacje_ue:wojewodztwo_pc"></span> na mieszkańca)<br/></span><br/></span>
 
     <span class="intro">Gmina zebrała <span id="gospodarka_odpadami_komunalnymi:dochody" class="pomaranczowy"></span>
     na gospodarkę odpadami komunalnymi, a wydała: <span id="gospodarka_odpadami_komunalnymi:wydatki" class="pomaranczowy"></span></span><br/>
@@ -40,6 +52,7 @@
 
 <div id="main_display">
 </div>
+<a href="#sekcja_sunburst" onclick="pokaz_sunburst();">Pokaż szczegóły</a><br/>
 </div>
 <span id="sekcja_dzial" hidden>
     <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
@@ -59,6 +72,10 @@
     <span id="projekty_pow"></span><br/>
     <h2>Wojewódzkie</h2>
     <span id="projekty_woj"></span>
+</span>
+<span id="sekcja_sunburst" hidden>
+    <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
+    <div id="sunburst"></div>
 </span>
 </body>
 </html>

@@ -127,8 +127,13 @@ function fillTable(json) {
 
     // Wypełnienie szczegółów o gminie z JSONa
     Object.keys(json).forEach(function(key) {
-        if (key === 'children' || key === 'projekty_ue') {
+        if (key === 'children' || key === 'projekty_ue' || key === 'bilans' || key === 'kod_gus' ||
+            key === 'kod_gus_podregionu' || key === 'podregion_eurostat') {
             // ignore
+        } else if (key === 'dotacje_ue') {
+            Object.keys(json[key]).forEach(function(key_ue) {
+                document.getElementById(key + ':' + key_ue).innerText = json['dotacje_ue'][key_ue];
+            })
         } else if (key === 'gospodarka_odpadami_komunalnymi' ||
             key === 'budzet') {
             document.getElementById(key + ':dochody').innerHTML = kwotaIZmiana(json[key], 'dochody');
@@ -148,7 +153,10 @@ function fillTable(json) {
 function zmien_dzial(dzial) {
     Object.keys(main_json.children[dzial]).forEach(function(key) {
         // ignore children table, handled by pieChart()
-        if (key !== 'children') {
+        if (key === 'children' || key === 'value') {
+            // ignore
+        } else {
+            console.log(key);
             document.getElementById(key).innerText = main_json.children[dzial][key];
         }
     })
@@ -159,18 +167,28 @@ function zmien_dzial(dzial) {
     document.getElementById('main_section').hidden = true;
     document.getElementById('sekcja_dzial').hidden = false;
     document.getElementById('sekcja_ue').hidden = true;
+    document.getElementById('sekcja_sunburst').hidden = true;
 }
 
 function pokaz_ue() {
     document.getElementById('main_section').hidden = true;
     document.getElementById('sekcja_dzial').hidden = true;
     document.getElementById('sekcja_ue').hidden = false;
+    document.getElementById('sekcja_sunburst').hidden = true;
+}
+
+function pokaz_sunburst() {
+    document.getElementById('main_section').hidden = true;
+    document.getElementById('sekcja_dzial').hidden = true;
+    document.getElementById('sekcja_ue').hidden = true;
+    document.getElementById('sekcja_sunburst').hidden = false;
 }
 
 function wroc() {
     document.getElementById('main_section').hidden = false;
     document.getElementById('sekcja_dzial').hidden = true;
     document.getElementById('sekcja_ue').hidden = true;
+    document.getElementById('sekcja_sunburst').hidden = true;
     window.location.href = window.location.href.split('#')[0] + '#';
 }
 
@@ -186,12 +204,14 @@ window.addEventListener("hashchange", function(e) {
         zmien_dzial(parseInt(dzial));
     } else if (e.newURL.includes("#sekcja_ue")) {
         // do nothing
+    } else if (e.newURL.includes("#sekcja_sunburst")) {
+        // do nothing
     } else {
         wroc();
     }
 })
 
-fetch("files/" + gmina + ".json")
+fetch("files/" + gmina + "-panel.json")
     .then(response => response.json())
     .then(json => fillTable(json));
 
