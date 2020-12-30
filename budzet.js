@@ -128,7 +128,7 @@ function fillTable(json) {
     // Wypełnienie szczegółów o gminie z JSONa
     Object.keys(json).forEach(function(key) {
         if (key === 'children' || key === 'projekty_ue' || key === 'bilans' || key === 'kod_gus' ||
-            key === 'kod_gus_podregionu' || key === 'podregion_eurostat') {
+            key === 'kod_gus_podregionu' || key === 'podregion_eurostat' || key === 'grupyDzialy' || key === 'grupyRozdzialy') {
             // ignore
         } else if (key === 'dotacje_ue') {
             Object.keys(json[key]).forEach(function(key_ue) {
@@ -156,7 +156,6 @@ function zmien_dzial(dzial) {
         if (key === 'children' || key === 'value') {
             // ignore
         } else {
-            console.log(key);
             document.getElementById(key).innerText = main_json.children[dzial][key];
         }
     })
