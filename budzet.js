@@ -144,7 +144,7 @@ function fillTable(json) {
             document.getElementById('janosik:otrzymala').hidden = json[key]['dochody'] === '0';
             document.getElementById('janosik:wplacila').hidden = json[key]['wydatki'] === '0';
         } else {
-            document.getElementById(key).innerText = json[key];
+            document.getElementById(key)?document.getElementById(key).innerText = json[key]:null;
         }
     })
     main_json = json;
@@ -183,6 +183,13 @@ function pokaz_sunburst() {
     document.getElementById('sekcja_sunburst').hidden = false;
 }
 
+function pokaz_sunburst_dochody() {
+    document.getElementById('main_section').hidden = true;
+    document.getElementById('sekcja_dzial').hidden = true;
+    document.getElementById('sekcja_ue').hidden = true;
+    document.getElementById('sekcja_sunburst_dochody').hidden = false;
+}
+
 function wroc() {
     document.getElementById('main_section').hidden = false;
     document.getElementById('sekcja_dzial').hidden = true;
@@ -196,6 +203,11 @@ const urlParams = new URLSearchParams(queryString);
 const gmina = urlParams.get('g');
 const nazwa = urlParams.get('n');
 const ludnosc = urlParams.get('l');
+const funkcja = urlParams.get('f');
+
+if (funkcja && funkcja != '') {
+    setTimeout(() => eval(funkcja + '()'), 1);
+}
 
 window.addEventListener("hashchange", function(e) {
     if (e.newURL.includes("#sekcja_dzial_")) {
