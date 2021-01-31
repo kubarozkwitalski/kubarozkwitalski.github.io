@@ -167,6 +167,7 @@ function zmien_dzial(dzial) {
     document.getElementById('sekcja_dzial').hidden = false;
     document.getElementById('sekcja_ue').hidden = true;
     document.getElementById('sekcja_sunburst').hidden = true;
+    document.getElementById('sekcja_sunburst_dochody').hidden = true;
 }
 
 function pokaz_ue() {
@@ -174,6 +175,7 @@ function pokaz_ue() {
     document.getElementById('sekcja_dzial').hidden = true;
     document.getElementById('sekcja_ue').hidden = false;
     document.getElementById('sekcja_sunburst').hidden = true;
+    document.getElementById('sekcja_sunburst_dochody').hidden = true;
 }
 
 function pokaz_sunburst() {
@@ -181,12 +183,14 @@ function pokaz_sunburst() {
     document.getElementById('sekcja_dzial').hidden = true;
     document.getElementById('sekcja_ue').hidden = true;
     document.getElementById('sekcja_sunburst').hidden = false;
+    document.getElementById('sekcja_sunburst_dochody').hidden = true;
 }
 
 function pokaz_sunburst_dochody() {
     document.getElementById('main_section').hidden = true;
     document.getElementById('sekcja_dzial').hidden = true;
     document.getElementById('sekcja_ue').hidden = true;
+    document.getElementById('sekcja_sunburst').hidden = true;
     document.getElementById('sekcja_sunburst_dochody').hidden = false;
 }
 
@@ -195,6 +199,7 @@ function wroc() {
     document.getElementById('sekcja_dzial').hidden = true;
     document.getElementById('sekcja_ue').hidden = true;
     document.getElementById('sekcja_sunburst').hidden = true;
+    document.getElementById('sekcja_sunburst_dochody').hidden = true;
     window.location.href = window.location.href.split('#')[0] + '#';
 }
 
