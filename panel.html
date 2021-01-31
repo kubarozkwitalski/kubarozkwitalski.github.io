@@ -16,12 +16,14 @@
     <script type="module">
 
         import sunburst from "./86ddbc29bd33f9d6@353.js";
+        import sunburst_dochody from "./dochody.js";
         import bilans from "./e68ad55af4b37234@124.js";
         import {Runtime, Inspector} from "./runtime.js";
 
         const runtime = new Runtime();
         const main = runtime.module(bilans, Inspector.into(document.getElementById('bilans')));
         const main2 = runtime.module(sunburst, Inspector.into(document.getElementById('sunburst')));
+        const main3 = runtime.module(sunburst_dochody, Inspector.into(document.getElementById('sunburst_dochody')));
     </script>
 </head>
 <body>
@@ -52,7 +54,8 @@
 
 <div id="main_display">
 </div>
-<a href="#sekcja_sunburst" onclick="pokaz_sunburst();">Pokaż szczegóły</a><br/>
+<a href="#sekcja_sunburst" onclick="pokaz_sunburst();">Pokaż szczegóły wydatków</a><br/>
+<a href="#sekcja_sunburst_dochody" onclick="pokaz_sunburst_dochody();">Pokaż szczegóły dochodów</a><br/>
 </div>
 <span id="sekcja_dzial" hidden>
     <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
@@ -72,6 +75,10 @@
     <span id="projekty_pow"></span><br/>
     <h2>Wojewódzkie</h2>
     <span id="projekty_woj"></span>
+</span>
+<span id="sekcja_sunburst_dochody" hidden>
+    <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
+    <div id="sunburst_dochody"></div>
 </span>
 <span id="sekcja_sunburst" hidden>
     <a href="javascript:window.history.back();">Wróć do listy działów</a><br/>
